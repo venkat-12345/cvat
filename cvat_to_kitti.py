@@ -14,18 +14,16 @@
 #
 # Applicable for CVAT annotations XML v1.1
 #
-# Reads XML files from a folder and creates 2 folders kitti_with_attributes files and kitti files in the same directory containing the files with their same name.
+# Reads a XML file and creates 2 folders kitti_with_attributes files and kitti files in the same directory containing the xml file with their respective image name
 # and 3 files for label map, distinct kitti labels and distinct kitti with attributes label
 #
 #------------------------------------------------------------------------------------------------------------------
 
 
-#Importing BeautifulSoup for parsing operations and os,pathlib for file operations
+#Importing BeautifulSoup for parsing operations and pathlib for file operations
 
 from bs4 import BeautifulSoup
-import os
 from pathlib import Path
-
 
 def cvat_xml_to_kitti(path_to_file,attribute_separator = "*"):
     
@@ -40,16 +38,19 @@ def cvat_xml_to_kitti(path_to_file,attribute_separator = "*"):
     """
 
     # Getting the Required file paths 
+    
+    path = pathlib.Path(path_to_file)
 
-    create_dir=os.path.dirname(path_to_file)
+
+    create_dir=path.parent
 
     # Creating required folders
 
     path_to_kitti_with_attributes = Path(create_dir,"kitti_with_attributes_files")
     path_to_kitti=Path(create_dir,"kitti_files")
 
-    os.makedirs(path_to_kitti_with_attributes,exist_ok = True)
-    os.makedirs(path_to_kitti,exist_ok = True)
+    path_to_kitti_with_attributes.mkdir(exist_ok = True)
+    path_to_kitti.mkdir(exist_ok = True)
 
     # List to maintain distinct labels of kitti and kitti_with_attributes
 
@@ -138,9 +139,9 @@ def cvat_xml_to_kitti(path_to_file,attribute_separator = "*"):
         
         # Getting file names
         
-        image_name=os.path.splitext(i.parent.attrs['name'])[0]
-    
-        l=os.path.basename(image_name)
+        img_path=Path(i.parent.attrs['name'])
+        image_name=img_path.with_suffix('')
+        l=img_path.stem
     
         path_to_kitti_with_attributes_file=Path(path_to_kitti_with_attributes,l+".txt")
     
