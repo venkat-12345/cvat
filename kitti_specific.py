@@ -11,9 +11,7 @@ def specific_labels(path_to_file,attribute_separator='*',specific_label_list=dic
         specific_label_list (dictionary) : Dictionary containing required labels as key and corresponding attribute list as values.
         attribute_separator (char) : Charachter to separate attribute values in kitti file.
 
-    """
-    from bs4 import BeautifulSoup
-    from pathlib import Path    
+    """    
     
     # case : incorrect datatype passed
     
