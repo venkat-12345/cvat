@@ -20,8 +20,12 @@ urlpatterns = [
 ]
 
 if settings.IAM_TYPE == 'BASIC':
+    if not settings.DISABLE_SELF_SIGNUP:
+        urlpatterns+=[
+            path('register', RegisterViewEx.as_view(), name='rest_register'),
+        ]
+
     urlpatterns += [
-        path('register', RegisterViewEx.as_view(), name='rest_register'),
         path('password/reset', PasswordResetView.as_view(),
             name='rest_password_reset'),
         path('password/reset/confirm', PasswordResetConfirmView.as_view(),
