@@ -243,6 +243,7 @@ IAM_ROLES = [IAM_ADMIN_ROLE, 'business', 'user', 'worker']
 IAM_OPA_DATA_URL = 'http://opa:8181/v1/data'
 LOGIN_URL = 'rest_login'
 LOGIN_REDIRECT_URL = '/'
+DISABLE_SELF_SIGNUP = os.getenv('DISABLE_SELF_SIGNUP', 'FALSE') == 'TRUE'
 
 # ORG settings
 ORG_INVITATION_CONFIRM = 'No'

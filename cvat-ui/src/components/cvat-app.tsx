@@ -15,7 +15,7 @@ import 'antd/dist/antd.css';
 
 import LoginPageContainer from 'containers/login-page/login-page';
 import LoginWithTokenComponent from 'components/login-with-token/login-with-token';
-import RegisterPageContainer from 'containers/register-page/register-page';
+// import RegisterPageContainer from 'containers/register-page/register-page';
 import ResetPasswordPageConfirmComponent from 'components/reset-password-confirm-page/reset-password-confirm-page';
 import ResetPasswordPageComponent from 'components/reset-password-page/reset-password-page';
 
@@ -402,7 +402,7 @@ class CVATApplication extends React.PureComponent<CVATAppProps & RouteComponentP
             return (
                 <GlobalErrorBoundary>
                     <Switch>
-                        <Route exact path='/auth/register' component={RegisterPageContainer} />
+                        {/* <Route exact path='/auth/register' component={RegisterPageContainer} /> */}
                         <Route exact path='/auth/login' component={LoginPageContainer} />
                         <Route
                             exact
