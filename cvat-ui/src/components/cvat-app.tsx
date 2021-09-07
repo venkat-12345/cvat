@@ -28,7 +28,7 @@ import TaskPageContainer from 'containers/task-page/task-page';
 import ModelsPageContainer from 'containers/models-page/models-page';
 import AnnotationPageContainer from 'containers/annotation-page/annotation-page';
 import LoginPageContainer from 'containers/login-page/login-page';
-import RegisterPageContainer from 'containers/register-page/register-page';
+// import RegisterPageContainer from 'containers/register-page/register-page';
 import getCore from 'cvat-core-wrapper';
 import GlobalHotKeys, { KeyMap } from 'utils/mousetrap-react';
 import { NotificationsState } from 'reducers/interfaces';
@@ -354,7 +354,7 @@ class CVATApplication extends React.PureComponent<CVATAppProps & RouteComponentP
             return (
                 <GlobalErrorBoundary>
                     <Switch>
-                        <Route exact path='/auth/register' component={RegisterPageContainer} />
+                        {/* <Route exact path='/auth/register' component={RegisterPageContainer} /> */}
                         <Route exact path='/auth/login' component={LoginPageContainer} />
                         <Route
                             exact
